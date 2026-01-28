@@ -1,4 +1,5 @@
-import React from "react";
+
+import { useNavigate } from "react-router-dom";
 import { 
   SquaresFour, 
   UserPlus, 
@@ -11,7 +12,6 @@ import {
   Package, 
   ChartBar, 
   Gear,
-  GraduationCap,
   SignOut
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
@@ -31,6 +31,12 @@ const menuItems = [
 ];
 
 export const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    navigate("/login", { replace: true });
+  };
+
   return (
     <aside className="w-72 pl-4 py-6 pr-2 flex flex-col h-screen sticky top-0">
       <div className="bg-white rounded-[2.5rem] flex flex-col h-full shadow-sm border border-blue-50/50 overflow-hidden">
@@ -52,14 +58,16 @@ export const Sidebar = () => {
                   : "text-slate-400 hover:text-blue-500 hover:bg-blue-50/30"
               )}
             >
-              <item.icon size={20} weight={item.active ? "fill" : "regular"} />
+              <item.icon size={20} weight={item.active ? "fill" : "regular"} className="flex-shrink-0" />
               {item.label}
             </button>
           ))}
         </nav>
 
         <div className="p-6">
-          <button className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-blue-500 text-white rounded-full text-sm font-semibold shadow-lg shadow-blue-200 hover:bg-blue-600 transition-all duration-300">
+          <button 
+            onClick={handleSignOut}
+            className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-blue-500 text-white rounded-full text-sm font-semibold shadow-lg shadow-blue-200 hover:bg-blue-600 transition-all duration-300">
             <SignOut size={18} weight="bold" />
             Sign Out
           </button>
