@@ -25,11 +25,11 @@ const COLORS = ["#3b82f6", "#f472b6"];
 
 export const FeeCollectionChart = () => (
   <Card className="border-none shadow-sm rounded-[2.5rem] bg-white/80 overflow-hidden">
-    <CardHeader>
-      <CardTitle className="text-lg font-bold text-slate-800">Monthly Fee Collection</CardTitle>
+    <CardHeader className="p-4 md:p-6">
+      <CardTitle className="text-base md:text-lg font-bold text-slate-800">Monthly Fee Collection</CardTitle>
     </CardHeader>
-    <CardContent>
-      <div className="h-[300px] w-full">
+    <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
+      <div className="h-[250px] md:h-[300px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={feeCollectionData}>
             <defs>
@@ -43,17 +43,18 @@ export const FeeCollectionChart = () => (
               dataKey="name" 
               axisLine={false} 
               tickLine={false} 
-              tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 600}}
+              tick={{fill: '#94a3b8', fontSize: 9, fontWeight: 600}}
               dy={10}
             />
             <YAxis 
               axisLine={false} 
               tickLine={false} 
-              tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 600}}
+              tick={{fill: '#94a3b8', fontSize: 9, fontWeight: 600}}
               tickFormatter={(value) => `₹${value}K`}
+              width={35}
             />
             <Tooltip 
-              contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}
+              contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', fontSize: '12px' }}
               formatter={(value) => [`₹${value}K`, 'Collection']}
             />
             <Area 
@@ -73,11 +74,11 @@ export const FeeCollectionChart = () => (
 
 export const AttendanceTrendChart = () => (
   <Card className="border-none shadow-sm rounded-[2.5rem] bg-white/80 overflow-hidden">
-    <CardHeader>
-      <CardTitle className="text-lg font-bold text-slate-800">Weekly Attendance</CardTitle>
+    <CardHeader className="p-4 md:p-6">
+      <CardTitle className="text-base md:text-lg font-bold text-slate-800">Weekly Attendance</CardTitle>
     </CardHeader>
-    <CardContent>
-      <div className="h-[250px] w-full">
+    <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
+      <div className="h-[200px] md:h-[250px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={attendanceTrendData}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -85,26 +86,27 @@ export const AttendanceTrendChart = () => (
               dataKey="name" 
               axisLine={false} 
               tickLine={false} 
-              tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 600}}
+              tick={{fill: '#94a3b8', fontSize: 9, fontWeight: 600}}
               dy={10}
             />
             <YAxis 
               axisLine={false} 
               tickLine={false} 
-              tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 600}}
+              tick={{fill: '#94a3b8', fontSize: 9, fontWeight: 600}}
               domain={[0, 100]}
               tickFormatter={(value) => `${value}%`}
+              width={35}
             />
             <Tooltip 
               cursor={{fill: '#f8fafc'}}
-              contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}
+              contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', fontSize: '12px' }}
               formatter={(value) => [`${value}%`, 'Attendance']}
             />
             <Bar 
               dataKey="attendance" 
               fill="#3b82f6" 
-              radius={[6, 6, 6, 6]} 
-              barSize={20}
+              radius={[4, 4, 4, 4]} 
+              barSize={window.innerWidth < 768 ? 12 : 20}
             />
           </BarChart>
         </ResponsiveContainer>
@@ -115,11 +117,11 @@ export const AttendanceTrendChart = () => (
 
 export const ClassStrengthChart = () => (
   <Card className="border-none shadow-sm rounded-[2.5rem] bg-white/80 overflow-hidden">
-    <CardHeader>
-      <CardTitle className="text-lg font-bold text-slate-800">Class Strength</CardTitle>
+    <CardHeader className="p-4 md:p-6">
+      <CardTitle className="text-base md:text-lg font-bold text-slate-800">Class Strength</CardTitle>
     </CardHeader>
-    <CardContent>
-      <div className="h-[250px] w-full">
+    <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
+      <div className="h-[200px] md:h-[250px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart layout="vertical" data={classStrengthData}>
             <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f1f5f9" />
@@ -127,25 +129,25 @@ export const ClassStrengthChart = () => (
               type="number"
               axisLine={false} 
               tickLine={false} 
-              tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 600}}
+              tick={{fill: '#94a3b8', fontSize: 9, fontWeight: 600}}
             />
             <YAxis 
               type="category"
               dataKey="class" 
               axisLine={false} 
               tickLine={false} 
-              tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 600}}
-              width={60}
+              tick={{fill: '#94a3b8', fontSize: 9, fontWeight: 600}}
+              width={40}
             />
             <Tooltip 
               cursor={{fill: '#f8fafc'}}
-              contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}
+              contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', fontSize: '12px' }}
             />
             <Bar 
               dataKey="strength" 
               fill="#8b5cf6" 
-              radius={[0, 6, 6, 0]} 
-              barSize={12}
+              radius={[0, 4, 4, 0]} 
+              barSize={window.innerWidth < 768 ? 8 : 12}
             />
           </BarChart>
         </ResponsiveContainer>
@@ -156,34 +158,34 @@ export const ClassStrengthChart = () => (
 
 export const GenderDistributionChart = () => (
   <Card className="border-none shadow-sm rounded-[2.5rem] bg-white/80 overflow-hidden">
-    <CardHeader>
-      <CardTitle className="text-lg font-bold text-slate-800">Distribution</CardTitle>
+    <CardHeader className="p-4 md:p-6">
+      <CardTitle className="text-base md:text-lg font-bold text-slate-800">Distribution</CardTitle>
     </CardHeader>
-    <CardContent>
-      <div className="h-[200px] w-full flex flex-col items-center justify-center">
+    <CardContent className="p-4 md:p-6 pt-0 md:pt-0">
+      <div className="h-[180px] md:h-[200px] w-full flex flex-col items-center justify-center">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
               data={genderDistributionData}
               cx="50%"
               cy="50%"
-              innerRadius={50}
-              outerRadius={70}
+              innerRadius={window.innerWidth < 768 ? 40 : 50}
+              outerRadius={window.innerWidth < 768 ? 60 : 70}
               paddingAngle={8}
               dataKey="value"
             >
               {genderDistributionData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} cornerRadius={10} />
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} cornerRadius={8} />
               ))}
             </Pie>
-            <Tooltip />
+            <Tooltip contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 25px rgba(0,0,0,0.05)', fontSize: '12px' }} />
           </PieChart>
         </ResponsiveContainer>
         <div className="flex gap-4 mt-2">
           {genderDistributionData.map((entry, index) => (
             <div key={entry.name} className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full" style={{backgroundColor: COLORS[index]}}></div>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">{entry.name}</span>
+              <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full" style={{backgroundColor: COLORS[index]}}></div>
+              <span className="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-tight">{entry.name}</span>
             </div>
           ))}
         </div>

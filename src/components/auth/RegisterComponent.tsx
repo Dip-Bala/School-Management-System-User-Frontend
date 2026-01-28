@@ -79,6 +79,12 @@ const RegisterComponent = ({ onSubmit }: { onSubmit: (data: RegisterData) => voi
       {/* Register Card */}
       <div className="w-full max-w-md">
         <div className="bg-white rounded-[2rem] shadow-xl p-8">
+          {/* Logo */}
+          <div className="flex flex-col items-center mb-6">
+            <img src="/logo.svg" alt="GurukoolX Logo" className="h-16 w-auto object-contain mb-2" />
+            <h2 className="text-xl font-bold text-blue-900/80 tracking-wide uppercase"></h2>
+          </div>
+
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">

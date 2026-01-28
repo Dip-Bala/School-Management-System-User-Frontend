@@ -5,6 +5,9 @@ import DashboardPage from "@/pages/dashboard/DashboardPage";
 import LoginPage from "@/pages/auth/LoginPage";
 import RegisterPage from "@/pages/auth/RegisterPage";
 import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";
+import NewAdmission from "@/pages/admissions/NewAdmission";
+import StudentList from "@/pages/admissions/StudentList";
+import IdCards from "@/pages/admissions/IdCards";
 import './App.css'
 
 function App() {
@@ -12,7 +15,7 @@ function App() {
     <>
       <ToastContainer
         position="top-right"
-        autoClose={30000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}
@@ -26,6 +29,12 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        
+        {/* Admissions Routes */}
+        <Route path="/admissions/new" element={<NewAdmission />} />
+        <Route path="/admissions/students" element={<StudentList />} />
+        <Route path="/admissions/id-cards" element={<IdCards />} />
+        
         <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
     </>
